@@ -9,10 +9,12 @@
             <description>JSP configuration for the store front</description>
             <url-pattern>/index.jsp</url-pattern>
             <url-pattern>/detail.jsp</url-pattern>
+
 <!-- và các trang khác -->
              <include-prelude>/WEB-INF/Layout/header.jsp</include-prelude>
             <include-coda>/WEB-INF/Layout/footer.jsp</include-coda>
         </jsp-property-group>
+       
 <!-- optional for admin GUI -->
 
     </jsp-config>
