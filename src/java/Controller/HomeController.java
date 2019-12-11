@@ -5,15 +5,15 @@
  */
 package Controller;
 
-import Model.Product;
-import Service.CategoryBusiness;
-import Service.ProductBusiness;
+import Entity.Categories;
+import Entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -21,39 +21,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import sessionbean.CategorySessionBean;
+import sessionbean.ProductSessionBean;
 
 /**
  *
  * @author 84969
  */
-    @WebServlet(name = "HomeController",
-                loadOnStartup=1,
-                urlPatterns = {"/HomeController"}
-            )
+@WebServlet(name = "HomeController",
+        urlPatterns = {"HomeController", "/category","/product",})
 public class HomeController extends HttpServlet {
-        
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-        super.init(servletConfig);
-        CategoryBusiness category = new CategoryBusiness();
-        ProductBusiness product = new ProductBusiness();
-        try {
-            getServletContext().setAttribute("listCategory",category.getCategory());
-            ArrayList<Product> listProject = new ArrayList<>();
-            listProject = (ArrayList<Product>) product.getProduct();
-            getServletContext().setAttribute("listProduct",listProject);
-        } catch (NamingException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-        
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-           
-        }
-    }
+
+    @EJB
+    private CategorySessionBean categorySB;
+
+    @EJB
+    private ProductSessionBean productSB;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -67,7 +51,40 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String userPath = request.getServletPath();
+        if (userPath.equals("/category")) {
+            String categoryId = request.getQueryString();
+            if (categoryId != null) {
+                Categories selectedCategory;
+                List<Products> categoryProducts;
+                selectedCategory = categorySB.find(Integer.parseInt(categoryId));
+                HttpSession session = request.getSession();
+                session.setAttribute("selectedCategory", selectedCategory);
+                categoryProducts = (List<Products>) selectedCategory.getProductsCollection();
+                session.setAttribute("listProducts", categoryProducts);
+                try {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+//                }
+            }
+        }
+            if (userPath.equals("/product")) {
+                String productId = request.getQueryString();
+                if (productId != null) {
+                    Products selectedProduct;
+                    selectedProduct = productSB.find(Integer.parseInt(productId));
+                    HttpSession session = request.getSession();
+                    session.setAttribute("selectedProduct", selectedProduct);
+                    try {
+                        request.getRequestDispatcher("product.jsp").forward(request, response);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+//                }
+                }
+            }
     }
 
     /**
@@ -81,7 +98,6 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -93,5 +109,4 @@ public class HomeController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

@@ -3,20 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/F:/Code%20Java/Web06/web/footer.jsp</file>
             <file>file:/F:/Code%20Java/Web06/web/header.jsp</file>
-            <file>file:/F:/Code%20Java/Web06/src/java/Model/Product.java</file>
-            <file>file:/F:/Code%20Java/Web06/src/java/Service/CategoryBusiness.java</file>
-            <file>file:/F:/Code%20Java/Web06/src/java/Service/ProductBusiness.java</file>
+            <file>file:/F:/Code%20Java/Web06/src/java/sessionbean/CategorySessionBean.java</file>
+            <file>file:/F:/Code%20Java/Web06/web/WEB-INF/web.xml</file>
+            <file>file:/F:/Code%20Java/Web06/src/java/listener/ControllerServletListener.java</file>
             <file>file:/F:/Code%20Java/Web06/src/java/Controller/HomeController.java</file>
-            <file>file:/F:/Code%20Java/Web06/src/java/Controller/ProductController.java</file>
-            <file>file:/F:/Code%20Java/Web06/web/index.jsp</file>
-=======
-            <file>file:/F:/Web06/web/index.jsp</file>
-            <file>file:/F:/Web06/web/WEB-INF/web.xml</file>
-            <file>file:/F:/Web06/web/detail.jsp</file>
->>>>>>> 55257fffa34096ee905007bfbc429b8f0f638823
+            <file>file:/F:/Code%20Java/Web06/build/generated-sources/ap-source-output/Entity/OrderDetails_.java</file>
+            <file>file:/F:/Code%20Java/Web06/src/java/sessionbean/AbstractSessionBean.java</file>
         </group>
     </open-files>
 </project-private>
