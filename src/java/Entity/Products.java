@@ -50,6 +50,12 @@ public class Products implements Serializable {
     @Size(max = 100)
     @Column(name = "image")
     private String image;
+     @Size(max = 100)
+    @Column(name = "image2")
+    private String image2;
+      @Size(max = 100)
+    @Column(name = "image3")
+    private String image3;
     @Size(max = 200)
     @Column(name = "Description")
     private String description;
@@ -94,6 +100,22 @@ public class Products implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    
+      public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+    
+      public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
     }
 
     public String getDescription() {
