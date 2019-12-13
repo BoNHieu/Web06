@@ -68,8 +68,10 @@ public class Products implements Serializable {
     private Categories categoryId;
     @OneToMany(mappedBy = "productId")
     private Collection<OrderDetails> orderDetailsCollection;
-    @OneToMany(mappedBy = "productId")
-    private Collection<ProductSupplierRelations> productSupplierRelationsCollection;
+     @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @ManyToOne
+    private Suppliers supplierId;
+
 
     public Products() {
     }
@@ -149,6 +151,16 @@ public class Products implements Serializable {
     public void setCategoryId(Categories categoryId) {
         this.categoryId = categoryId;
     }
+    
+        
+    public Suppliers getSupplierId(){
+        return supplierId;
+    }
+    
+    
+       public void setSupplierId(Suppliers supplierId) {
+        this.supplierId = supplierId;
+    }
 
     @XmlTransient
     public Collection<OrderDetails> getOrderDetailsCollection() {
@@ -159,14 +171,6 @@ public class Products implements Serializable {
         this.orderDetailsCollection = orderDetailsCollection;
     }
 
-    @XmlTransient
-    public Collection<ProductSupplierRelations> getProductSupplierRelationsCollection() {
-        return productSupplierRelationsCollection;
-    }
-
-    public void setProductSupplierRelationsCollection(Collection<ProductSupplierRelations> productSupplierRelationsCollection) {
-        this.productSupplierRelationsCollection = productSupplierRelationsCollection;
-    }
 
     @Override
     public int hashCode() {

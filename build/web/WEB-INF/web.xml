@@ -4,7 +4,7 @@
         <description>ServletContextListener</description>
         <listener-class>listener.ControllerServletListener</listener-class>
     </listener>
-        <resource-ref>
+    <resource-ref>
         <description>DB Conection</description>
         <res-ref-name>jdbc/web06</res-ref-name>
         <res-type>javax.sql.ConnectionPoolDataSource</res-type>
@@ -23,7 +23,6 @@
             <include-prelude>/header.jsp</include-prelude>
             <include-coda>/footer.jsp</include-coda>
         </jsp-property-group>
-        <!-- optional for admin GUI -->
     </jsp-config>
     <servlet>
         <servlet-name>CategoryController</servlet-name>
@@ -45,16 +44,24 @@
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/HomeController</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/category</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
     
-    
+       <servlet>
+        <servlet-name>productCreate</servlet-name>
+        <jsp-file>/admin/Product/create.jsp</jsp-file>
+    </servlet>
+    <!--mapping-->
+    <servlet-mapping>
+        <servlet-name>productCreate</servlet-name>
+        <url-pattern>/Product/create</url-pattern>   
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
