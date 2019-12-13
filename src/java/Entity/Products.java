@@ -50,6 +50,12 @@ public class Products implements Serializable {
     @Size(max = 100)
     @Column(name = "image")
     private String image;
+     @Size(max = 100)
+    @Column(name = "image2")
+    private String image2;
+      @Size(max = 100)
+    @Column(name = "image3")
+    private String image3;
     @Size(max = 200)
     @Column(name = "Description")
     private String description;
@@ -62,8 +68,10 @@ public class Products implements Serializable {
     private Categories categoryId;
     @OneToMany(mappedBy = "productId")
     private Collection<OrderDetails> orderDetailsCollection;
-    @OneToMany(mappedBy = "productId")
-    private Collection<ProductSupplierRelations> productSupplierRelationsCollection;
+     @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @ManyToOne
+    private Suppliers supplierId;
+
 
     public Products() {
     }
@@ -94,6 +102,22 @@ public class Products implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+    
+      public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+    
+      public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
     }
 
     public String getDescription() {
@@ -127,6 +151,16 @@ public class Products implements Serializable {
     public void setCategoryId(Categories categoryId) {
         this.categoryId = categoryId;
     }
+    
+        
+    public Suppliers getSupplierId(){
+        return supplierId;
+    }
+    
+    
+       public void setSupplierId(Suppliers supplierId) {
+        this.supplierId = supplierId;
+    }
 
     @XmlTransient
     public Collection<OrderDetails> getOrderDetailsCollection() {
@@ -137,14 +171,6 @@ public class Products implements Serializable {
         this.orderDetailsCollection = orderDetailsCollection;
     }
 
-    @XmlTransient
-    public Collection<ProductSupplierRelations> getProductSupplierRelationsCollection() {
-        return productSupplierRelationsCollection;
-    }
-
-    public void setProductSupplierRelationsCollection(Collection<ProductSupplierRelations> productSupplierRelationsCollection) {
-        this.productSupplierRelationsCollection = productSupplierRelationsCollection;
-    }
 
     @Override
     public int hashCode() {

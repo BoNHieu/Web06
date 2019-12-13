@@ -77,6 +77,8 @@ public class HomeController extends HttpServlet {
                     selectedProduct = productSB.find(Integer.parseInt(productId));
                     HttpSession session = request.getSession();
                     session.setAttribute("selectedProduct", selectedProduct);
+                    Categories category = selectedProduct.getCategoryId();
+                     session.setAttribute("category", category);
                     try {
                         request.getRequestDispatcher("product.jsp").forward(request, response);
                     } catch (Exception ex) {
