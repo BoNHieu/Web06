@@ -5,7 +5,7 @@
  */
 package sessionbean;
 
-import Entity.Products;
+import Entity.Suppliers;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.ejb.Stateless;
 import static javax.lang.model.SourceVersion.RELEASE_8;
@@ -15,22 +15,22 @@ import javax.persistence.PersistenceContext;
 /**
  *
  * @author 84969
+ * 
  */
+
 @SupportedSourceVersion(RELEASE_8)
 
 @Stateless
-public class ProductSessionBean extends AbstractSessionBean<Products> {
+public class SupplierSessionBean extends AbstractSessionBean<Suppliers> {
 
-    @PersistenceContext(unitName = "Web06PU")
-    private EntityManager em;
-
-    public ProductSessionBean() {
-        super(Products.class);
+    public SupplierSessionBean() {
+        super(Suppliers.class);
     }
-
+@PersistenceContext(unitName = "Web06PU")
+private EntityManager em;
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
 }

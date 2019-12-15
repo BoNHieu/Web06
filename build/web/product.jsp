@@ -42,7 +42,7 @@
 					<div class="product_description">
 						<div class="product_category"><%=c.getName()%></div>
 						<div class="product_name"><%=p.getName()%></div>
-						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                <div class="rating_r rating_r_4 product_rating">Count : <%=p.getCount()%></div>
 						<div class="product_text"><p><%=p.getDescription()%></p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">

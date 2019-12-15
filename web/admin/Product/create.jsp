@@ -15,11 +15,11 @@
 
 <div class="card">
     <div class="body">
-        <form asp-action="Create" class="form-horizontal" enctype="multipart/form-data">
+        <form action="ProductController" class="form-horizontal" enctype="multipart/form-data" method="POST">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row clearfix">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label asp-for="Name"></label>
+                    <label name="name">Tên sản phẩm</label>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                     <div class="form-group">
@@ -32,7 +32,7 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label asp-for="Descirption"></label>
+                    <label name="descirption">Mô tả</label>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                     <div class="form-group">
@@ -45,7 +45,7 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label name="categoryId"></label>
+                    <label name="categoryId">Danh mục sản phẩm</label>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
@@ -60,6 +60,66 @@
                 </div>
             
             </div>
+                <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label name="supplierId">Nhà cung cấp</label>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select id="supplierId" name="supplierId">
+                                 <c:forEach var="c" items="${listSuppliers}">
+                                        <option value=${c.getId()}>${c.getName()}</option>
+                            </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+                    <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label name="count">Số lượng</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="count" class="form-control" placeholder="Số lượng">
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+            
+                    <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label name="price_input">Gía nhập</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="price_input" class="form-control" placeholder="Giá Nhập">
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+            
+                    <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label name="price_output">Giá Xuất</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="price_output" class="form-control" placeholder="Giá Xuất">
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+            
             <div class="row clearfix">
                 <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                     <input type="submit" value="Create" class="btn btn-success" />

@@ -11,6 +11,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import sessionbean.CategorySessionBean;
 import sessionbean.ProductSessionBean;
+import sessionbean.SupplierSessionBean;
 
 /**
  * Web application lifecycle listener.
@@ -24,6 +25,9 @@ public class ControllerServletListener implements ServletContextListener {
 
     @EJB
     CategorySessionBean categorySessionBean;
+    
+     @EJB
+    SupplierSessionBean supplierSessionBean;
 
     ServletContext context;
 
@@ -32,6 +36,7 @@ public class ControllerServletListener implements ServletContextListener {
         context = sce.getServletContext();
         context.setAttribute("listProducts", productSessionBean.findRange(new int[]{0, 10}));
         context.setAttribute("listCategorys", categorySessionBean.findRange(new int[]{0, 10}));
+        context.setAttribute("listSuppliers", supplierSessionBean.findRange(new int[]{0, 10}));
     }
 
     @Override
