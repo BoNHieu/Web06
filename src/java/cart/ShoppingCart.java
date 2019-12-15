@@ -38,6 +38,22 @@ public class ShoppingCart {
         }
     }
 
+    public synchronized void addItemWithQuantity(Products product, short quantity) {
+        boolean newItem = true;
+        for (ShoppingCartItem scItem : items) {
+            if (scItem.getProduct().getId() == product.getId()) {
+                newItem = false;
+                short oldQuantity = (short) scItem.getQuantity();
+                scItem.setQuantity((short) (oldQuantity + quantity));
+            }
+        }
+        if (newItem) {
+            ShoppingCartItem scItem = new ShoppingCartItem(product);
+            scItem.setQuantity(quantity);
+            items.add(scItem);
+        }
+    }
+
     public synchronized void update(Products product, String quantity) {
         short qty = -1;
         // cast quantity as short
@@ -47,7 +63,7 @@ public class ShoppingCart {
             for (ShoppingCartItem scItem : items) {
                 if (scItem.getProduct().getId() == product.getId()) {
                     if (qty != 0) {
- // set item quantity to new value
+                        // set item quantity to new value
                         scItem.setQuantity(qty);
                     } else {
                         // if quantity equals 0, save item and break
@@ -95,6 +111,7 @@ public class ShoppingCart {
     }
 
     public synchronized double getTotal() {
+        total = this.getSubtotal();
         return total;
     }
 

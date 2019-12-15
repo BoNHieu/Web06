@@ -53,6 +53,14 @@
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/addToCart</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/updateToCart</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>productCreate</servlet-name>
@@ -64,9 +72,7 @@
         <url-pattern>/Product/create</url-pattern>   
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>20</session-timeout>
     </session-config>
     <context-param>
         <param-name>imgProductPath</param-name>
