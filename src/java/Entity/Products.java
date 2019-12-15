@@ -62,7 +62,9 @@ public class Products implements Serializable {
     @Column(name = "count")
     private Integer count;
     @Column(name = "price_output")
-    private Integer priceOutput;
+    private Integer priceOutput; 
+     @Column(name = "price_input")
+    private Integer priceInput;
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @ManyToOne
     private Categories categoryId;
@@ -142,6 +144,14 @@ public class Products implements Serializable {
 
     public void setPriceOutput(Integer priceOutput) {
         this.priceOutput = priceOutput;
+    }
+    
+       public Integer getPriceInput() {
+        return priceInput;
+    }
+
+    public void setPriceInput(Integer priceInput) {
+        this.priceInput = priceInput;
     }
 
     public Categories getCategoryId() {

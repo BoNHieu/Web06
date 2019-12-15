@@ -4,61 +4,61 @@
     Author     : 84969
 --%>
 
-  <!-- Characteristics -->
-    <div class="characteristics">
-            <div class="container">
-                <div class="row">
+<!-- Characteristics -->
+<div class="characteristics">
+    <div class="container">
+        <div class="row">
 
-                    <!-- Char. Item -->
-                    <div class="col-lg-3 col-md-6 char_col">
+            <!-- Char. Item -->
+            <div class="col-lg-3 col-md-6 char_col">
 
-                        <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                            <div class="char_icon"><img src="images/char_1.png" alt=""></div>
-                            <div class="char_content">
-                                <div class="char_title">Free Delivery</div>
-                                <div class="char_subtitle">from $50</div>
-                            </div>
-                        </div>
+                <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_icon"><img src="images/char_1.png" alt=""></div>
+                    <div class="char_content">
+                        <div class="char_title">Free Delivery</div>
+                        <div class="char_subtitle">from $50</div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Char. Item -->
-                    <div class="col-lg-3 col-md-6 char_col">
+            <!-- Char. Item -->
+            <div class="col-lg-3 col-md-6 char_col">
 
-                        <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                            <div class="char_icon"><img src="images/char_2.png" alt=""></div>
-                            <div class="char_content">
-                                <div class="char_title">Free Delivery</div>
-                                <div class="char_subtitle">from $50</div>
-                            </div>
-                        </div>
+                <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_icon"><img src="images/char_2.png" alt=""></div>
+                    <div class="char_content">
+                        <div class="char_title">Free Delivery</div>
+                        <div class="char_subtitle">from $50</div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Char. Item -->
-                    <div class="col-lg-3 col-md-6 char_col">
+            <!-- Char. Item -->
+            <div class="col-lg-3 col-md-6 char_col">
 
-                        <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                            <div class="char_icon"><img src="images/char_3.png" alt=""></div>
-                            <div class="char_content">
-                                <div class="char_title">Free Delivery</div>
-                                <div class="char_subtitle">from $50</div>
-                            </div>
-                        </div>
+                <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_icon"><img src="images/char_3.png" alt=""></div>
+                    <div class="char_content">
+                        <div class="char_title">Free Delivery</div>
+                        <div class="char_subtitle">from $50</div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Char. Item -->
-                    <div class="col-lg-3 col-md-6 char_col">
+            <!-- Char. Item -->
+            <div class="col-lg-3 col-md-6 char_col">
 
-                        <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                            <div class="char_icon"><img src="images/char_4.png" alt=""></div>
-                            <div class="char_content">
-                                <div class="char_title">Free Delivery</div>
-                                <div class="char_subtitle">from $50</div>
-                            </div>
-                        </div>
+                <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                    <div class="char_icon"><img src="images/char_4.png" alt=""></div>
+                    <div class="char_content">
+                        <div class="char_title">Free Delivery</div>
+                        <div class="char_subtitle">from $50</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
 <c:set var='view' value='/index' scope='session' />
 <div class="container">
@@ -81,9 +81,6 @@
             <!-- Product Panel -->
             <div class="product_panel panel active">
                 <div class="arrivals_slider slider">
-                    
-                    
-
                     <c:forEach var="p" items="${listProducts}">
                         <!-- Slider Item -->
                         <div class="arrivals_slider_item">
@@ -99,7 +96,7 @@
                                             <input type="radio" name="product_color" style="background:#000000">
                                             <input type="radio" name="product_color" style="background:#999999">
                                         </div>
-                                        <button class="product_cart_button active">Add to Cart</button>
+                                        <a href="<c:url value='addToCart?${p.getId()}'/>"  class="button product_cart_button active">Add to Cart</a>
                                     </div>
                                 </div>
                                 <div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -110,12 +107,14 @@
                             </div>
                         </div>
                     </c:forEach>
-
-
-
                 </div>
                 <div class="arrivals_slider_dots_cover"></div>
             </div>
+
+                </div>
+                <div class="featured_slider_dots_cover"></div>
+            </div>
+
 
 
 

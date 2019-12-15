@@ -19,6 +19,7 @@
             <description>JSP configuration for the store front</description>
             <url-pattern>/index.jsp</url-pattern>
             <url-pattern>/product.jsp</url-pattern>
+            <url-pattern>/viewCart.jsp</url-pattern>
             <!-- và các trang khác -->
             <include-prelude>/header.jsp</include-prelude>
             <include-coda>/footer.jsp</include-coda>
@@ -34,7 +35,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
-        <url-pattern>/ProductController</url-pattern>
+        <url-pattern>/admin/Product/ProductController/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>
@@ -53,7 +54,7 @@
         <url-pattern>/product</url-pattern>
     </servlet-mapping>
     
-       <servlet>
+    <servlet>
         <servlet-name>productCreate</servlet-name>
         <jsp-file>/admin/Product/create.jsp</jsp-file>
     </servlet>
