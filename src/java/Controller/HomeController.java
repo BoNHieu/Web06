@@ -7,6 +7,7 @@ package Controller;
 
 import Entity.Categories;
 import Entity.Products;
+import cart.ShoppingCart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -30,7 +31,10 @@ import sessionbean.ProductSessionBean;
  * @author 84969
  */
 @WebServlet(name = "HomeController",
-        urlPatterns = {"HomeController", "/category","/product",})
+        urlPatterns = {"HomeController",
+            "/category",
+            "/product",
+            "addToCart",})
 public class HomeController extends HttpServlet {
 
     @EJB
@@ -52,13 +56,14 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String userPath = request.getServletPath();
+        HttpSession session = request.getSession();
+         session.setMaxInactiveInterval(3600);
         if (userPath.equals("/category")) {
             String categoryId = request.getQueryString();
             if (categoryId != null) {
                 Categories selectedCategory;
                 List<Products> categoryProducts;
                 selectedCategory = categorySB.find(Integer.parseInt(categoryId));
-                HttpSession session = request.getSession();
                 session.setAttribute("selectedCategory", selectedCategory);
                 categoryProducts = (List<Products>) selectedCategory.getProductsCollection();
                 session.setAttribute("listProducts", categoryProducts);
@@ -69,24 +74,76 @@ public class HomeController extends HttpServlet {
                 }
 //                }
             }
-        }
-            if (userPath.equals("/product")) {
-                String productId = request.getQueryString();
-                if (productId != null) {
-                    Products selectedProduct;
-                    selectedProduct = productSB.find(Integer.parseInt(productId));
-                    HttpSession session = request.getSession();
-                    session.setAttribute("selectedProduct", selectedProduct);
-                    Categories category = selectedProduct.getCategoryId();
-                     session.setAttribute("category", category);
-                    try {
-                        request.getRequestDispatcher("product.jsp").forward(request, response);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-//                }
+        } else if (userPath.equals("/product")) {
+            String productId = request.getQueryString();
+            if (productId != null) {
+                Products selectedProduct;
+                selectedProduct = productSB.find(Integer.parseInt(productId));
+                session.setAttribute("selectedProduct", selectedProduct);
+                Categories category = selectedProduct.getCategoryId();
+                session.setAttribute("category", category);
+                try {
+                    request.getRequestDispatcher("product.jsp").forward(request, response);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
+        } else if (userPath.equals("/viewCart")) {
+//            String clear = request.getParameter("clear");
+//            if ((clear != null) && clear.equals("true")) {
+//                ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+//                cart.clear();
+//            }
+        } else if (userPath.equals("/addToCart")) {
+            ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+            if (cart == null) {
+                cart = new ShoppingCart();
+                session.setAttribute("cart", cart);
+            }
+            String productId = request.getParameter("id");
+            if (productId == null) {
+                productId = request.getQueryString();
+            }
+            if (!productId.isEmpty()) {
+                Products product = productSB.find(Integer.parseInt(productId));
+                String quantityText = request.getParameter("quantity_input");
+                if (quantityText != null) {
+                    short quantity = Short.parseShort(quantityText);
+                    cart.addItemWithQuantity(product, quantity);
+                }
+                else {
+                    cart.addItem(product);
+                }
+            }
+//            String userView = (String) session.getAttribute("view");
+//            userPath = userView;
+            try {
+                response.sendRedirect(request.getContextPath() + "/viewCart.jsp");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        else if (userPath.equals("/updateToCart")) {
+            ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+            String productId = request.getParameter("id");
+            if (productId == null) {
+                productId = request.getQueryString();
+            }
+            if (!productId.isEmpty()) {
+                Products product = productSB.find(Integer.parseInt(productId));
+                String quantityText = request.getParameter("quantity_input");
+                if (quantityText != null) {
+                    cart.update(product, quantityText);
+                }
+            }
+//            String userView = (String) session.getAttribute("view");
+//            userPath = userView;
+            try {
+                response.sendRedirect(request.getContextPath() + "/viewCart.jsp");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     /**

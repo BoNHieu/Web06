@@ -88,7 +88,7 @@
                             <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
                                 <div class="product_image d-flex flex-column align-items-center justify-content-center"><a href="<c:url value='product?${p.getId()}'/>">${p.getName()}<img src="${initParam.imgProductPath}${p.getImage()}" alt=""></a></div>
                                 <div class="product_content">
-                                    <div class="product_price">${p.getPriceOutput()}</div>
+                                    <div class="product_price">$${p.getPriceOutput()}</div>
                                     <div class="product_name"><div><a href="<c:url value='product?${p.getId()}'/>">${p.getName()}</a></div></div>
                                     <div class="product_extras">
                                         <div class="product_color">
