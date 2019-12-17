@@ -22,7 +22,8 @@
         <link rel="stylesheet" type="text/css" href="styles/responsive.css">
         <link rel="stylesheet" type="text/css" href="styles/cart_styles.css">
         <link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
-
+        <link href="styles/mdb.min.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/style.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- Header -->

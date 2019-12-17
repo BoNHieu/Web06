@@ -25,33 +25,26 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author 84969
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "Customers")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
-    @NamedQuery(name = "Users.findByFullName", query = "SELECT u FROM Users u WHERE u.fullName = :fullName"),
-    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
-    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
-    @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
-    @NamedQuery(name = "Users.findByPhone", query = "SELECT u FROM Users u WHERE u.phone = :phone"),
-    @NamedQuery(name = "Users.findByAddress", query = "SELECT u FROM Users u WHERE u.address = :address")})
-public class Users implements Serializable {
+    @NamedQuery(name = "Customers.findAll", query = "SELECT c FROM Customers c"),
+    @NamedQuery(name = "Customers.findById", query = "SELECT c FROM Customers c WHERE c.id = :id"),
+    @NamedQuery(name = "Customers.findByEmail", query = "SELECT c FROM Customers c WHERE c.email = :email"),
+    @NamedQuery(name = "Customers.findByPhone", query = "SELECT c FROM Customers c WHERE c.phone = :phone"),
+    @NamedQuery(name = "Customers.findByAddress", query = "SELECT c FROM Customers c WHERE c.address = :address"),
+    @NamedQuery(name = "Customers.findByFirstName", query = "SELECT c FROM Customers c WHERE c.firstName = :firstName"),
+    @NamedQuery(name = "Customers.findByLastName", query = "SELECT c FROM Customers c WHERE c.lastName = :lastName"),
+    @NamedQuery(name = "Customers.findByCountry", query = "SELECT c FROM Customers c WHERE c.country = :country"),
+    @NamedQuery(name = "Customers.findByState", query = "SELECT c FROM Customers c WHERE c.state = :state"),
+    @NamedQuery(name = "Customers.findByZip", query = "SELECT c FROM Customers c WHERE c.zip = :zip")})
+public class Customers implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @Size(max = 30)
-    @Column(name = "full_name")
-    private String fullName;
-    @Size(max = 30)
-    @Column(name = "username")
-    private String username;
-    @Size(max = 30)
-    @Column(name = "password")
-    private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 30)
     @Column(name = "email")
@@ -63,13 +56,28 @@ public class Users implements Serializable {
     @Size(max = 100)
     @Column(name = "address")
     private String address;
-    @OneToMany(mappedBy = "userId")
+    @Size(max = 50)
+    @Column(name = "first_name")
+    private String firstName;
+    @Size(max = 50)
+    @Column(name = "last_name")
+    private String lastName;
+    @Size(max = 50)
+    @Column(name = "country")
+    private String country;
+    @Size(max = 50)
+    @Column(name = "state")
+    private String state;
+    @Size(max = 20)
+    @Column(name = "zip")
+    private String zip;
+    @OneToMany(mappedBy = "customerId")
     private Collection<Orders> ordersCollection;
 
-    public Users() {
+    public Customers() {
     }
 
-    public Users(Integer id) {
+    public Customers(Integer id) {
         this.id = id;
     }
 
@@ -79,30 +87,6 @@ public class Users implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -129,6 +113,46 @@ public class Users implements Serializable {
         this.address = address;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
     @XmlTransient
     public Collection<Orders> getOrdersCollection() {
         return ordersCollection;
@@ -148,10 +172,10 @@ public class Users implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Users)) {
+        if (!(object instanceof Customers)) {
             return false;
         }
-        Users other = (Users) object;
+        Customers other = (Customers) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -160,7 +184,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Users[ id=" + id + " ]";
+        return "Entity.Customers[ id=" + id + " ]";
     }
     
 }

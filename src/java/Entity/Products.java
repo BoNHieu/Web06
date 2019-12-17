@@ -36,7 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Products.findByImage", query = "SELECT p FROM Products p WHERE p.image = :image"),
     @NamedQuery(name = "Products.findByDescription", query = "SELECT p FROM Products p WHERE p.description = :description"),
     @NamedQuery(name = "Products.findByCount", query = "SELECT p FROM Products p WHERE p.count = :count"),
-    @NamedQuery(name = "Products.findByPriceOutput", query = "SELECT p FROM Products p WHERE p.priceOutput = :priceOutput")})
+    @NamedQuery(name = "Products.findByPriceOutput", query = "SELECT p FROM Products p WHERE p.priceOutput = :priceOutput"),
+    @NamedQuery(name = "Products.findByImage2", query = "SELECT p FROM Products p WHERE p.image2 = :image2"),
+    @NamedQuery(name = "Products.findByImage3", query = "SELECT p FROM Products p WHERE p.image3 = :image3"),
+    @NamedQuery(name = "Products.findByPriceInput", query = "SELECT p FROM Products p WHERE p.priceInput = :priceInput")})
 public class Products implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,30 +53,29 @@ public class Products implements Serializable {
     @Size(max = 100)
     @Column(name = "image")
     private String image;
-     @Size(max = 100)
-    @Column(name = "image2")
-    private String image2;
-      @Size(max = 100)
-    @Column(name = "image3")
-    private String image3;
     @Size(max = 200)
     @Column(name = "Description")
     private String description;
     @Column(name = "count")
     private Integer count;
     @Column(name = "price_output")
-    private Integer priceOutput; 
-     @Column(name = "price_input")
+    private Integer priceOutput;
+    @Size(max = 100)
+    @Column(name = "image2")
+    private String image2;
+    @Size(max = 100)
+    @Column(name = "image3")
+    private String image3;
+    @Column(name = "price_input")
     private Integer priceInput;
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @ManyToOne
     private Categories categoryId;
-    @OneToMany(mappedBy = "productId")
-    private Collection<OrderDetails> orderDetailsCollection;
-     @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
     @ManyToOne
     private Suppliers supplierId;
-
+    @OneToMany(mappedBy = "productId")
+    private Collection<OrderDetails> orderDetailsCollection;
 
     public Products() {
     }
@@ -105,22 +107,6 @@ public class Products implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
-    
-      public String getImage2() {
-        return image2;
-    }
-
-    public void setImage2(String image2) {
-        this.image2 = image2;
-    }
-    
-      public String getImage3() {
-        return image3;
-    }
-
-    public void setImage3(String image3) {
-        this.image3 = image3;
-    }
 
     public String getDescription() {
         return description;
@@ -145,8 +131,24 @@ public class Products implements Serializable {
     public void setPriceOutput(Integer priceOutput) {
         this.priceOutput = priceOutput;
     }
-    
-       public Integer getPriceInput() {
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+
+    public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
+    }
+
+    public Integer getPriceInput() {
         return priceInput;
     }
 
@@ -161,14 +163,12 @@ public class Products implements Serializable {
     public void setCategoryId(Categories categoryId) {
         this.categoryId = categoryId;
     }
-    
-        
-    public Suppliers getSupplierId(){
+
+    public Suppliers getSupplierId() {
         return supplierId;
     }
-    
-    
-       public void setSupplierId(Suppliers supplierId) {
+
+    public void setSupplierId(Suppliers supplierId) {
         this.supplierId = supplierId;
     }
 
@@ -180,7 +180,6 @@ public class Products implements Serializable {
     public void setOrderDetailsCollection(Collection<OrderDetails> orderDetailsCollection) {
         this.orderDetailsCollection = orderDetailsCollection;
     }
-
 
     @Override
     public int hashCode() {

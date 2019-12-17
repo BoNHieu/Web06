@@ -67,7 +67,7 @@
 
                     <div class="cart_buttons">
                         <a href="/Web06" type="button" class="button cart_button_clear">Back to List</a>
-                        <button type="button" class="button cart_button_checkout">Checkout</button>
+                        <a href="/Web06/checkout.jsp" class="button cart_button_checkout">Checkout</a>
                     </div>
                 </div>
             </div>

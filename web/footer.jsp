@@ -135,6 +135,11 @@
 <script src="plugins/easing/easing.js"></script>
 <script src="js/product_custom.js"></script>
 <script src="js/custom.js"></script>
-
+<script src="js/mdb.min.js" type="text/javascript"></script>
+<script src="js/popper.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
 </body>
 </html>

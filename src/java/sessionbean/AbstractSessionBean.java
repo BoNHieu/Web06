@@ -11,6 +11,7 @@ package sessionbean;
  */
 import java.util.List;
 import javax.persistence.EntityManager;
+
 @SuppressWarnings("unchecked")
 public abstract class AbstractSessionBean<T> {
 
@@ -24,6 +25,7 @@ public abstract class AbstractSessionBean<T> {
 
     public void create(T entity) {
         getEntityManager().persist(entity);
+//        getEntityManager().flush();
     }
 
     public void edit(T entity) {
@@ -33,7 +35,8 @@ public abstract class AbstractSessionBean<T> {
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
-@SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
@@ -45,7 +48,8 @@ public abstract class AbstractSessionBean<T> {
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
-@SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq
                 = getEntityManager().getCriteriaBuilder().createQuery();
