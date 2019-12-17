@@ -55,6 +55,8 @@ public class Suppliers implements Serializable {
     @Size(max = 200)
     @Column(name = "description")
     private String description;
+    @OneToMany(mappedBy = "supplierId")
+    private Collection<Products> productsCollection;
 
     public Suppliers() {
     }
@@ -101,6 +103,15 @@ public class Suppliers implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @XmlTransient
+    public Collection<Products> getProductsCollection() {
+        return productsCollection;
+    }
+
+    public void setProductsCollection(Collection<Products> productsCollection) {
+        this.productsCollection = productsCollection;
     }
 
     @Override

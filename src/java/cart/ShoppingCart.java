@@ -10,7 +10,6 @@ package cart;
  * @author 84969
  */
 import Entity.Products;
-import Entity.ShoppingCartItem;
 import java.util.*;
 
 public class ShoppingCart {

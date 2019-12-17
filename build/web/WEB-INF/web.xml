@@ -20,6 +20,7 @@
             <url-pattern>/index.jsp</url-pattern>
             <url-pattern>/product.jsp</url-pattern>
             <url-pattern>/viewCart.jsp</url-pattern>
+            <url-pattern>/checkout.jsp</url-pattern>
             <!-- và các trang khác -->
             <include-prelude>/header.jsp</include-prelude>
             <include-coda>/footer.jsp</include-coda>
@@ -57,11 +58,14 @@
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/addToCart</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/updateToCart</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>productCreate</servlet-name>
         <jsp-file>/admin/Product/create.jsp</jsp-file>
@@ -72,8 +76,14 @@
         <url-pattern>/Product/create</url-pattern>   
     </servlet-mapping>
     <session-config>
-        <session-timeout>20</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
+    <context-param>
+        <description>The delivery fee</description>
+        <param-name>deliveryFee</param-name>
+        <param-value>5.00</param-value>
+    </context-param>
+
     <context-param>
         <param-name>imgProductPath</param-name>
         <param-value>img/product/</param-value>

@@ -50,9 +50,9 @@ public class Orders implements Serializable {
     @Size(max = 30)
     @Column(name = "status")
     private String status;
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @ManyToOne
-    private Users userId;
+    private Customers customerId;
     @OneToMany(mappedBy = "orderId")
     private Collection<OrderDetails> orderDetailsCollection;
 
@@ -87,12 +87,12 @@ public class Orders implements Serializable {
         this.status = status;
     }
 
-    public Users getUserId() {
-        return userId;
+    public Customers getCustomerId() {
+        return customerId;
     }
 
-    public void setUserId(Users userId) {
-        this.userId = userId;
+    public void setCustomerId(Customers customerId) {
+        this.customerId = customerId;
     }
 
     @XmlTransient
