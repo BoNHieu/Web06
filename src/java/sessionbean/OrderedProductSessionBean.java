@@ -6,6 +6,7 @@
 package sessionbean;
 
 import Entity.OrderDetails;
+import Entity.Orders;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,7 +31,7 @@ public class OrderedProductSessionBean extends AbstractSessionBean<OrderDetails>
         super(OrderDetails.class);
     }
 
-    public List<OrderDetails> findByOrderId(Object id) {
-        return em.createNamedQuery("OrderedProduct.findByOrderId").setParameter("orderId",id).getResultList();
+    public List<OrderDetails> findByOrderId(Orders order) {
+        return em.createNamedQuery("OrderDetails.findByOrderId").setParameter("orderId",order).getResultList();
     }
 }

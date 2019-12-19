@@ -21,6 +21,7 @@
             <url-pattern>/product.jsp</url-pattern>
             <url-pattern>/viewCart.jsp</url-pattern>
             <url-pattern>/checkout.jsp</url-pattern>
+             <url-pattern>/confirmation.jsp</url-pattern>
             <!-- và các trang khác -->
             <include-prelude>/header.jsp</include-prelude>
             <include-coda>/footer.jsp</include-coda>

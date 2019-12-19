@@ -182,15 +182,14 @@ public class HomeController extends HttpServlet {
                                 orderMap.get("orderRecord"));
                         request.setAttribute("orderedProducts",
                                 orderMap.get("orderedProducts"));
-                        path = "/confirmation";
+                        path = "/confirmation.jsp";
                     } else {
-                        path = "/checkout";
+                        path = "/checkout.jsp";
                         request.setAttribute("orderFailureFlag", true);
                     }
                 }
-                String url = path + ".jsp";
                 try {
-                    request.getRequestDispatcher(url).forward(request, response);
+                    request.getRequestDispatcher(path).forward(request, response);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
