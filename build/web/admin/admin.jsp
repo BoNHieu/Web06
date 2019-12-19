@@ -167,13 +167,13 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="">
+                        <a href="/Web06/admin/Product/index.jsp">
                             <i class="material-icons">menu</i>
                             <span>Danh sách sản phẩm</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/Web06/admin/Product/create.jsp">
                             <i class="material-icons">add</i>
                             <span>Thêm sản phẩm</span>
                         </a>

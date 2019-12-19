@@ -81,7 +81,6 @@ public class HomeController extends HttpServlet {
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-//                }
                 }
             } else if (userPath.equals("/product")) {
                 String productId = request.getQueryString();

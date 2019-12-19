@@ -15,7 +15,7 @@
 
 <div class="card">
     <div class="body">
-        <form action="<c:url value='/createProduct' />" class="form-horizontal" method="POST">
+        <form action="<c:url value='/admin/Product/createProduct' />" class="form-horizontal" method="POST">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row clearfix">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -37,7 +37,7 @@
                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" name="description" class="form-control" placeholder="Mô tả">
+                            <input type="text" name="descirption" class="form-control" placeholder="Mô tả">
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                 <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                     <input type="submit" value="Create" class="btn btn-success" />
                     <br /><br />
-                    <a href="">Back to List</a>
+                    <a href="index.jsp">Back to List</a>
                 </div>
             </div>
         </form>

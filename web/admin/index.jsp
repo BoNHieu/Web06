@@ -1,20 +1,21 @@
 <%-- 
-    Document   : admin.jsp
-    Created on : Dec 12, 2019, 10:21:20 PM
+    Document   : index
+    Created on : Dec 19, 2019, 8:42:15 PM
     Author     : 84969
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
+
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>@ViewData["Title"] -ShopOnline</title>
+    <title>Admin</title>
 
-    <!-- Favicon-->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -169,13 +170,13 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="">
+                        <a href="/Web06/admin/Product/index.jsp">
                             <i class="material-icons">menu</i>
                             <span>Danh sách sản phẩm</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/Web06/admin/Product/create.jsp">
                             <i class="material-icons">add</i>
                             <span>Thêm sản phẩm</span>
                         </a>
@@ -264,78 +265,126 @@
         
         <!-- #END# Right Sidebar -->
     </section>
-    <partial name="_CookieConsentPartial" />
     <section class="content">
         <div class="container-fluid">
-     <h2>Create</h2>
-
-<div class="card">
-    <div class="body">
-        <form asp-action="Create" class="form-horizontal" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="row clearfix">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label asp-for="Name"></label>
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" asp-for="Name" class="form-control" placeholder="Tên thiết bị">
-                        </div>
+     
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary" style="font-size:14px;color:white;font-weight:500;">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-arrow-alt-circle-up fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="font-size:20px;">10</div>
+                        <div>Nhập kho</div>
                     </div>
                 </div>
-               
             </div>
-            <div class="row clearfix">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label asp-for="Image"></label>
+            <a asp-area="Admin" asp-controller="Inputs" asp-action="Index" >
+                <div class="panel-footer">
+                    <span class="pull-left">Xem Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="file" name="files" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label asp-for="Descirption"></label>
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="text" asp-for="Descirption" class="form-control" placeholder="Mô tả">
-                        </div>
-                    </div>
-                </div>
-         
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                    <label asp-for="CategoryId"></label>
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
-                    <div class="form-group">
-                        <div class="form-line">
-                            <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryId"></select>
-                        </div>
-                    </div>
-                </div>
-            
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                    <input type="submit" value="Create" class="btn btn-success" />
-                    <br /><br />
-                    <a href="">Back to List</a>
-                </div>
-            </div>
-        </form>
+            </a>
+        </div>
     </div>
-</div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel"style="font-size:14px;color:white;font-weight:500;">
+            <div class="panel-heading" style="background-color:forestgreen;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-tasks fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="font-size:20px;">30</div>
+                        <div>Sản Phẩm</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="Products" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
 
+    <div class="col-lg-3 col-md-6">
+        <div class="panel"style="font-size:14px;color:white;font-weight:500;">
+            <div class="panel-heading" style="background-color:orangered;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-truck-moving fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"style="font-size:20px;">40</div>
+                        <div>Nhà cung cấp</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="Suppliers" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="panel" style="font-size:14px;color:white;font-weight:500;">
+            <div class="panel-heading" style="background-color:darkviolet">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-bars fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge" style="font-size:20px;">25</div>
+                        <div>Danh mục sản phẩm</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="Categories" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">9</div>
+                        <div>Đơn Hàng - Sản Phẩm</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/admin/don-hang">
+                <div class="panel-footer">
+                    <span class="pull-left">Xem Chi Tiết</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+</div>
+    
 
    </div>
     </section>

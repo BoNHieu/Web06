@@ -10,6 +10,7 @@ import Entity.Products;
 import Entity.Suppliers;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.SessionContext;
@@ -52,6 +53,9 @@ public class ProductController extends HttpServlet {
     @EJB
     private ProductManager productManager;
 
+    @EJB
+    ProductSessionBean productSessionBean;
+
     @PersistenceContext(unitName = "Web06PU")
     private EntityManager em;
 
@@ -64,7 +68,7 @@ public class ProductController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String userPath = request.getServletPath();
             HttpSession session = request.getSession();
-            if (userPath.equals("/createProduct")) {
+            if (userPath.equals("/admin/Product/createProduct")) {
                 String name = request.getParameter("name");
                 String count = request.getParameter("count");
                 String description = request.getParameter("descirption");
@@ -85,12 +89,66 @@ public class ProductController extends HttpServlet {
                 product.setPriceInput(Integer.valueOf(price_input));
                 try {
                     productManager.create(product);
-                    request.getRequestDispatcher("/Product/create").forward(request, response);
+                    request.getRequestDispatcher("/admin/Product/index.jsp").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
+            } else if (userPath.equals("/admin/Product/editProduct")) {
+                String productId = request.getQueryString();
+                if (productId != null) {
+                    Products product;
+                    product = productSB.find(Integer.parseInt(productId));
+                    session.setAttribute("productEdit", product);
+                    try {
+                        request.getRequestDispatcher("/admin/Product/edit.jsp").forward(request, response);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            } else if (userPath.equals("/admin/Product/submitEdit")) {
+                String productId = request.getParameter("id");
+                if (productId != null) {
+                    Products product;
+                    product = productSB.find(Integer.parseInt(productId));
+                    String name = request.getParameter("name");
+                    String count = request.getParameter("count");
+                    String description = request.getParameter("descirption");
+                    String categoryId = request.getParameter("categoryId");
+                    String supplierId = request.getParameter("supplierId");
+                    String price_input = request.getParameter("price_input");
+                    String price_output = request.getParameter("price_output");
 
+                    product.setName(name);
+                    product.setDescription(description);
+                    Categories category = categorySB.find(Integer.parseInt(categoryId));
+                    product.setCategoryId(category);
+                    Suppliers supplier = supplierSB.find(Integer.parseInt(supplierId));
+                    product.setSupplierId(supplier);
+                    product.setCount(Integer.parseInt(count));
+                    product.setPriceOutput(Integer.valueOf(price_output));
+                    product.setPriceInput(Integer.valueOf(price_input));
+
+                    try {
+                        productManager.update(product);
+                        session.setAttribute("listProducts", productSessionBean.findRange(new int[]{0, 100}));
+                        request.getRequestDispatcher("/admin/Product/index.jsp").forward(request, response);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            } else if (userPath.equals("/admin/Product/details")) {
+                String productId = request.getQueryString();
+                if (productId != null) {
+                    Products product;
+                    product = productSB.find(Integer.parseInt(productId));
+                    session.setAttribute("productEdit", product);
+                    try {
+                        request.getRequestDispatcher("/admin/Product/details.jsp").forward(request, response);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
         }
     }
 

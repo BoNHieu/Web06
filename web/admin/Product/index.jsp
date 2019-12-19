@@ -11,83 +11,89 @@
 
 <jsp:include page="../admin.jsp"></jsp:include>
 
-<h2>DANH SÁCH SẢN PHẨM</h2>
+    <h2>DANH SÁCH SẢN PHẨM</h2>
 
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header">
-                <a class="btn btn-primary" href="create.jsp">Create New</a>
-                <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);">Action</a></li>
-                            <li><a href="javascript:void(0);">Another action</a></li>
-                            <li><a href="javascript:void(0);">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                        <thead>
-                            <tr class="table-info">
-                                <th>
-                                    Tên Sản phẩm
-                                </th> 
-                                <th>
-                                    Hình ảnh
-                                </th>
-                                <th>
-                                    Mô tả
-                                </th>
-                                <th>
-                                    Danh mục
-                                </th>
-                                       <th>
-                                    Nhà cung cấp
-                                </th>
-                                       <th>
-                                    Giá Nhập
-                                </th>       <th>
-                                    Giá xuất
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr class="table-info">
-                          <th>
-                                    Tên Sản phẩm
-                                </th> 
-                                <th>
-                                    Hình ảnh
-                                </th>
-                                <th>
-                                    Mô tả
-                                </th>
-                                <th>
-                                    Danh mục
-                                </th>
-                                       <th>
-                                    Nhà cung cấp
-                                </th>
-                                       <th>
-                                    Giá Nhập
-                                </th>       <th>
-                                    Giá xuất
-                                </th>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                        <c:forEach var="p" items="${listProducts}">
-                        <!-- Slider Item -->
-                       <tr class="table-info">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <a class="btn btn-primary" href="create.jsp">Create New</a>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr class="table-info">
+                                    <th>
+                                        Tên Sản phẩm
+                                    </th> 
+                                    <th>
+                                        Hình ảnh
+                                    </th>
+                                    <th>
+                                        Mô tả
+                                    </th>
+                                    <th>
+                                        Danh mục
+                                    </th>
+                                    <th>
+                                        Nhà cung cấp
+                                    </th>
+                                    <th>
+                                        Số lượng
+                                    </th>
+                                    <th>
+                                        Giá Nhập
+                                    </th>       <th>
+                                        Giá xuất
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr class="table-info">
+                                    <th>
+                                        Tên Sản phẩm
+                                    </th> 
+                                    <th>
+                                        Hình ảnh
+                                    </th>
+                                    <th>
+                                        Mô tả
+                                    </th>
+                                    <th>
+                                        Danh mục
+                                    </th>
+                                    <th>
+                                        Nhà cung cấp
+                                    </th>
+                                    <th>
+                                        Số lượng
+                                    </th>
+                                    <th>
+                                        Giá Nhập
+                                    </th>       <th>
+                                        Giá xuất
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                            <c:forEach var="p" items="${listProducts}">
+                                <!-- Slider Item -->
+                                <tr class="table-info">
                                     <td>
                                         ${p.getName()}
                                     </td> 
@@ -98,24 +104,26 @@
                                         ${p.getDescription()}
                                     </td>
                                     <td>
-                                         ${p.getCategoryId().getName()}
-                                    </td>
-                                       <td>
-                                         ${p.getSupplierId().getName()}
-                                    </td>
-                                          <td>
-                                         ${p.getPriceInput()}
-                                    </td>
-                                          <td>
-                                         ${p.getPriceOutput()}
+                                        ${p.getCategoryId().getName()}
                                     </td>
                                     <td>
-                                        <a href="editProduct?${p.getId()}" class="btn btn-primary">Edit</a>
-                                        <a href="detailsProduct?${p.getId()}" class="btn btn-success">Details</a>
-                                        <a href="deleteProduct?${p.getId()}" class="btn btn-danger">Delete</a>
+                                        ${p.getSupplierId().getName()}
+                                    </td>
+                                    <td>
+                                        ${p.getCount()}
+                                    </td>
+                                    <td>
+                                        ${p.getPriceInput()}
+                                    </td>
+                                    <td>
+                                        ${p.getPriceOutput()}
+                                    </td>
+                                    <td>
+                                        <a href="/Web06/admin/Product/editProduct?${p.getId()}" class="btn btn-primary">Edit</a>
+                                        <a href="/Web06/admin/Product/details?${p.getId()}" class="btn btn-success">Details</a>
                                     </td>
                                 </tr>
-                    </c:forEach>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>

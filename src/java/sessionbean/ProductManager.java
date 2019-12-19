@@ -42,4 +42,12 @@ public class ProductManager {
             e.printStackTrace();
         }
     }
+    public void update(Products product) {
+        try {
+            productSB.edit(product);
+        } catch (Exception e) {
+            context.setRollbackOnly();
+            e.printStackTrace();
+        }
+    }
 }
