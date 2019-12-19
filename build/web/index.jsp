@@ -3,7 +3,7 @@
     Created on : Oct 28, 2019, 10:51:28 PM
     Author     : 84969
 --%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Characteristics -->
 <div class="characteristics">
     <div class="container">
@@ -15,8 +15,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_1.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Mi?n ph� giao h�ng</div>
-                        <div class="char_subtitle">v?i ??n h�ng t? 200k</div>
+                        <div class="char_title">Miễn phí giao hàng</div>
+                        <div class="char_subtitle">khuyến mãi trên 200k</div>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_2.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">??i tr? mi?n ph�</div>
-                        <div class="char_subtitle">trong v�ng 7 ng�y v?i ??n h�ng l?i</div>
+                        <div class="char_title">đổi trả miễn phí</div>
+                        <div class="char_subtitle">trong vòng 7 ngày với đơn hàng iphone 11</div>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_3.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Thanh to�n thu?n ti?n</div>
-                        <div class="char_subtitle">cho ph�p thanh to�n b?ng v� ?i?n t?</div>
+                        <div class="char_title">Thanh toán thuận tiện</div>
+                        <div class="char_subtitle">cho phép thanh toán bằng ví điện tử</div>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_4.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Cam k?t ch�nh h�ng</div>
+                        <div class="char_title">Cam kết chính hãng</div>
                         <div class="char_subtitle"></div>
                     </div>
                 </div>
