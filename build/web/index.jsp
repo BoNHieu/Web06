@@ -15,8 +15,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_1.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Free Delivery</div>
-                        <div class="char_subtitle">from $50</div>
+                        <div class="char_title">Mi?n phí giao hàng</div>
+                        <div class="char_subtitle">v?i ??n hàng t? 200k</div>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_2.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Free Delivery</div>
-                        <div class="char_subtitle">from $50</div>
+                        <div class="char_title">??i tr? mi?n phí</div>
+                        <div class="char_subtitle">trong vòng 7 ngày v?i ??n hàng l?i</div>
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_3.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Free Delivery</div>
-                        <div class="char_subtitle">from $50</div>
+                        <div class="char_title">Thanh toán thu?n ti?n</div>
+                        <div class="char_subtitle">cho phép thanh toán b?ng ví ?i?n t?</div>
                     </div>
                 </div>
             </div>
@@ -51,8 +51,8 @@
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
                     <div class="char_icon"><img src="images/char_4.png" alt=""></div>
                     <div class="char_content">
-                        <div class="char_title">Free Delivery</div>
-                        <div class="char_subtitle">from $50</div>
+                        <div class="char_title">Cam k?t chính hãng</div>
+                        <div class="char_subtitle"></div>
                     </div>
                 </div>
             </div>
