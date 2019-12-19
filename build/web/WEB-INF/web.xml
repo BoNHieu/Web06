@@ -37,7 +37,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
-        <url-pattern>/admin/Product/ProductController/*</url-pattern>
+        <url-pattern>/createProduct</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>

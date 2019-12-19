@@ -15,7 +15,7 @@
 
 <div class="card">
     <div class="body">
-        <form action="ProductController" class="form-horizontal" enctype="multipart/form-data" method="POST">
+        <form action="<c:url value='/createProduct' />" class="form-horizontal" method="POST">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row clearfix">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
@@ -37,7 +37,7 @@
                 <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" name="descirption" class="form-control" placeholder="Mô tả">
+                            <input type="text" name="description" class="form-control" placeholder="Mô tả">
                         </div>
                     </div>
                 </div>
