@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import sessionbean.CategorySessionBean;
+import sessionbean.OrderedProductSessionBean;
 import sessionbean.ProductSessionBean;
 import sessionbean.SupplierSessionBean;
 
@@ -25,9 +26,12 @@ public class ControllerServletListener implements ServletContextListener {
 
     @EJB
     CategorySessionBean categorySessionBean;
-    
-     @EJB
+
+    @EJB
     SupplierSessionBean supplierSessionBean;
+    
+    @EJB
+    OrderedProductSessionBean orderProductSessionBean;
 
     ServletContext context;
 
@@ -37,6 +41,7 @@ public class ControllerServletListener implements ServletContextListener {
         context.setAttribute("listProducts", productSessionBean.findRange(new int[]{0, 100}));
         context.setAttribute("listCategorys", categorySessionBean.findRange(new int[]{0, 100}));
         context.setAttribute("listSuppliers", supplierSessionBean.findRange(new int[]{0, 100}));
+        context.setAttribute("listOrders", orderProductSessionBean.findRange(new int[]{0, 100}));
     }
 
     @Override

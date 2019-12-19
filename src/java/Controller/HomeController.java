@@ -103,6 +103,14 @@ public class HomeController extends HttpServlet {
 //                cart.clear();
 //            }
             } else if (userPath.equals("/addToCart")) {
+                String name = (String) session.getAttribute("name");
+//                if(name == null){
+//                     try {
+//                    request.getRequestDispatcher("login.jsp").forward(request, response);
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//                }
                 if (cart == null) {
                     cart = new ShoppingCart();
                     session.setAttribute("cart", cart);

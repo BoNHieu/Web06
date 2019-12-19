@@ -35,6 +35,10 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>Controller.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>Controller.LoginController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/admin/Product/createProduct</url-pattern>
@@ -47,7 +51,7 @@
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/admin/Product/submitEdit</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/admin/Product/details</url-pattern>
     </servlet-mapping>
@@ -86,7 +90,23 @@
     <!--mapping-->
     <servlet-mapping>
         <servlet-name>productCreate</servlet-name>
-        <url-pattern>/Product/create</url-pattern>   
+        <url-pattern>/Product/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
@@ -96,7 +116,6 @@
         <param-name>deliveryFee</param-name>
         <param-value>5.00</param-value>
     </context-param>
-
     <context-param>
         <param-name>imgProductPath</param-name>
         <param-value>img/product/</param-value>

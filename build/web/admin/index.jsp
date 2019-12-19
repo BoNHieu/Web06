@@ -186,19 +186,13 @@
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">menu</i>
-                    <span>QUẢN LÝ DANH MỤC</span>
+                    <span>QUẢN LÝ ĐƠN HÀNG</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="">
+                        <a href="/admin/Order/index.jsp">
                             <i class="material-icons">menu</i>
-                            <span>Danh sách danh mục</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="material-icons">add</i>
-                            <span>Thêm danh mục</span>
+                            <span>Danh sách đơn hàng</span>
                         </a>
                     </li>
                 </ul>
@@ -373,7 +367,7 @@
                     </div>
                 </div>
             </div>
-            <a href="/admin/don-hang">
+            <a href="/admin/Order/index.jsp">
                 <div class="panel-footer">
                     <span class="pull-left">Xem Chi Tiết</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

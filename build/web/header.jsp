@@ -6,6 +6,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    String name = (String) session.getAttribute("name");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,9 +64,18 @@
                                         </ul>
                                     </div>
                                     <div class="top_bar_user">
-                                        <div class="user_icon"><img src="images/user.svg" alt=""></div>
-                                        <div><a href="#">Register</a></div>
-                                        <div><a href="#">Sign in</a></div>
+                                        <c:set var = "name" scope = "session" value="<%=name%>" />
+                                        <c:choose>
+                                            <c:when test="${name == null}">
+                                                <div class="user_icon"><img src="images/user.svg" alt=""></div>
+                                                <div><a href="register.jsp">Đăng ký</a></div>
+                                                <div><a href="login.jsp">Đăng nhập</a></div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div><span>Xin chào: <%=name%> </span></div>
+                                                <div><a href="logout">  Đăng xuất</a></div>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
                             </div>
@@ -93,15 +105,14 @@
                                                 <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
                                                 <div class="custom_dropdown">
                                                     <div class="custom_dropdown_list">
-                                                        <span class="custom_dropdown_placeholder clc">All Categories</span>
+                                                        <span class="custom_dropdown_placeholder clc">Danh mục sản phẩm</span>
                                                         <i class="fas fa-chevron-down"></i>
                                                         <ul class="custom_list clc">
-                                                            <li><a class="clc" href="#">All Categories</a></li>
-                                                            <li><a class="clc" href="#">Computers</a></li>
+                                                            <li><a class="clc" href="#">Tất cả</a></li>
+                                                            <li><a class="clc" href="#">Máy tính</a></li>
                                                             <li><a class="clc" href="#">Laptops</a></li>
-                                                            <li><a class="clc" href="#">Cameras</a></li>
-                                                            <li><a class="clc" href="#">Hardware</a></li>
-                                                            <li><a class="clc" href="#">Smartphones</a></li>
+                                                            <li><a class="clc" href="#">Máy ảnh</a></li>
+                                                            <li><a class="clc" href="#">Điện thoại</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -131,7 +142,7 @@
                                                 <div class="cart_count"><span>10</span></div>
                                             </div>
                                             <div class="cart_content">
-                                                <div class="cart_text"><a href="#">Cart</a></div>
+                                                <div class="cart_text"><a href="#">Giỏ hàng</a></div>
                                                 <div class="cart_price">$85</div>
                                             </div>
                                         </div>

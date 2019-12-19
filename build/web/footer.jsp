@@ -3,6 +3,7 @@
     Created on : Nov 7, 2019, 11:00:43 PM
     Author     : 84969
 --%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <footer class="footer">
     <div class="container">
@@ -13,11 +14,11 @@
                     <div class="logo_container">
                         <div class="logo"><a href="#">OneTech</a></div>
                     </div>
-                    <div class="footer_title">Hotline tr? l?i th?c m?c 24/7</div>
+                    <div class="footer_title">Hotline trả lời thắc mắc 24/7</div>
                     <div class="footer_phone">0944256106</div>
                     <div class="footer_contact_text">
-                        <p>55, Gi�p Nh?, H� N?i, Vi?t Nam</p>
-                        <p>94, H?ng Mai, H� N?i, Vi?t Nam</p>
+                        <p>55, Giáp Nhị, Hà Nội, Việt Nam</p>
+                        <p>94, H?ng Mai, Hà Nội, Việt Nam</p>
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -33,29 +34,29 @@
 
             <div class="col-lg-3 offset-lg-3">
                 <div class="footer_column">
-                    <div class="footer_title">T�m nhanh</div>
+                    <div class="footer_title">Tìm nhanh</div>
                     <ul class="footer_list">
-                        <li><a href="#">M�y t�nh & Laptops</a></li>
-                        <li><a href="#">M�y ?nh</a></li>
-                        <li><a href="#">Ph?n c?ng</a></li>
-                        <li><a href="#">?i?n tho?i & M�y t�nh b?ng</a></li>
+                        <li><a href="#">Máy tính & Laptops</a></li>
+                        <li><a href="#">Máy ảnh</a></li>
+                        <li><a href="#">Phần cứng</a></li>
+                        <li><a href="#">Điện thoại & Máy tính bảng</a></li>
                         <li><a href="#">TV & Audio</a></li>
                     </ul>
-                    <div class="footer_subtitle"><li><a href="#">Ti?n �ch</a></li></div>
+                    <div class="footer_subtitle"><li><a href="#">Tiện ích</a></li></div>
                 </div>
             </div>
 
 
             <div class="col-lg-3">
                 <div class="footer_column">
-                    <div class="footer_title">Ch?m s�c kh�ch h�ng</div>
+                    <div class="footer_title">Chăm sóc khách hàng</div>
                     <ul class="footer_list">
-                        <li><a href="#">T�i kho?n</a></li>
-                        <li><a href="#">Theo d�i ??n h�ng</a></li>
-                        <li><a href="#">Danh s�ch mong mu?n</a></li>
-                        <li><a href="#">D?ch v?</a></li>
-                        <li><a href="#">Ch�nh s�ch ??i tr?</a></li>
-                        <li><a href="#">C�c c�u h?i th??ng g?p</a></li>
+                        <li><a href="#">Tài khoản</a></li>
+                        <li><a href="#">Theo dõi đơn hàng</a></li>
+                        <li><a href="#">Danh sách mong muốn</a></li>
+                        <li><a href="#">Dịch vụ</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Các câu hỏi thường gặp</a></li>
                     </ul>
                 </div>
             </div>

@@ -20,5 +20,5 @@
         <property name="URL" value="jdbc:sqlserver://localhost\DESKTOP-6U7SI7M:1433;databaseName=Web06"/>
         <property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="jdbc/web066" object-type="user" pool-name="microsoft_sql_Web06_saPool"/>   
+    <jdbc-resource enabled="true" jndi-name="jdbc/web066" object-type="user" pool-name="microsoft_sql_Web06_saPool"/>
 </resources>
