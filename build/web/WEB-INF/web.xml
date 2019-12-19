@@ -21,7 +21,7 @@
             <url-pattern>/product.jsp</url-pattern>
             <url-pattern>/viewCart.jsp</url-pattern>
             <url-pattern>/checkout.jsp</url-pattern>
-             <url-pattern>/confirmation.jsp</url-pattern>
+            <url-pattern>/confirmation.jsp</url-pattern>
             <!-- và các trang khác -->
             <include-prelude>/header.jsp</include-prelude>
             <include-coda>/footer.jsp</include-coda>
@@ -37,7 +37,19 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
-        <url-pattern>/admin/Product/ProductController/*</url-pattern>
+        <url-pattern>/admin/Product/createProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/admin/Product/editProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/admin/Product/submitEdit</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/admin/Product/details</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>
