@@ -10,6 +10,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -39,36 +41,45 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Customers.findByState", query = "SELECT c FROM Customers c WHERE c.state = :state"),
     @NamedQuery(name = "Customers.findByZip", query = "SELECT c FROM Customers c WHERE c.zip = :zip")})
 public class Customers implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Integer id;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 30)
+    @NotNull
     @Column(name = "email")
     private String email;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 12)
+    @NotNull
     @Column(name = "phone")
     private String phone;
     @Size(max = 100)
+    @NotNull
     @Column(name = "address")
     private String address;
     @Size(max = 50)
+    @NotNull
     @Column(name = "first_name")
     private String firstName;
     @Size(max = 50)
+    @NotNull
     @Column(name = "last_name")
     private String lastName;
     @Size(max = 50)
+    @NotNull
     @Column(name = "country")
     private String country;
     @Size(max = 50)
+    @NotNull
     @Column(name = "state")
     private String state;
     @Size(max = 20)
+    @NotNull
     @Column(name = "zip")
     private String zip;
     @OneToMany(mappedBy = "customerId")
@@ -186,5 +197,5 @@ public class Customers implements Serializable {
     public String toString() {
         return "Entity.Customers[ id=" + id + " ]";
     }
-    
+
 }

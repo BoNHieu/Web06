@@ -10,6 +10,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,8 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Products.findByImage3", query = "SELECT p FROM Products p WHERE p.image3 = :image3"),
     @NamedQuery(name = "Products.findByPriceInput", query = "SELECT p FROM Products p WHERE p.priceInput = :priceInput")})
 public class Products implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
@@ -205,5 +209,5 @@ public class Products implements Serializable {
     public String toString() {
         return "Entity.Products[ id=" + id + " ]";
     }
-    
+
 }

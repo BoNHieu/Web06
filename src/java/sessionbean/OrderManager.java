@@ -1,6 +1,5 @@
 package sessionbean;
 
-
 import Entity.Customers;
 import Entity.OrderDetails;
 import Entity.Orders;
@@ -36,7 +35,7 @@ import sessionbean.ProductSessionBean;
  *
 
 
-/**
+ /**
  *
  * @author 84969
  */
@@ -73,6 +72,7 @@ public class OrderManager {
         }
     }
 
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     private Customers addCustomer(String firstName, String lastName, String email, String phone, String address, String country, String state, String zip) {
         Customers customer = new Customers();
         customer.setFirstName(firstName);
@@ -82,11 +82,12 @@ public class OrderManager {
         customer.setAddress(address);
         customer.setCountry(country);
         customer.setState(state);
-        customer.setState(zip);
-        customerSB.create(customer);
+        customer.setZip(zip);
+        customer = customerSB.create(customer);
         return customer;
     }
 
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     private Orders addOrder(Customers customer, ShoppingCart cart) {
         // set up customer order
         Orders order = new Orders();
@@ -95,7 +96,7 @@ public class OrderManager {
         // create confirmation number
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
 //        order.setDate(df.format(new Date()));
-        customerOrderSB.create(order);
+        order = customerOrderSB.create(order);
         return order;
     }
 
@@ -109,7 +110,7 @@ public class OrderManager {
             orderDetails.setOrderId(order);
             orderDetails.setProductId(productId);
             // create ordered item using PK object            // set quantity
-            orderDetails.setCount((int)scItem.getQuantity());
+            orderDetails.setCount((int) scItem.getQuantity());
             orderedProductSB.create(orderDetails);
         }
     }
@@ -122,11 +123,11 @@ public class OrderManager {
         Customers customer = order.getCustomerId();
         // get all ordered products
         List<OrderDetails> orderedProducts
-                = orderedProductSB.findByOrderId(orderId);
+                = orderedProductSB.findByOrderId(order);
         // get product details for ordered items
         List<Products> products = new ArrayList<Products>();
         for (OrderDetails op : orderedProducts) {
-            Products p = (Products) productSB.find(op.getProductId());
+            Products p = (Products) productSB.find(op.getProductId().getId());
             products.add(p);
         }
         // add each item to orderMap
