@@ -30,9 +30,12 @@ Quản trị viên có thể quản lý Sản phẩm và các đơn đặt hàng
 ###Lưu ý:*Cần nhiều điều kiện tiên quyết hơn nêu muốn xây dựng trang web này từ source code.*
 ###Hướng dẫn cài đặt(**Ghi chú**:Sử dụng Netbean mở project.)
 *Bước 1:Chạy tệp tin db.script để khởi tạo cơ sở dữ liệu.
-
+![database](https://user-images.githubusercontent.com/44610326/71303165-6066f880-23e7-11ea-889d-e75c6b264d60.png)
 *Bước 2:Mở Netbean.
-*BƯớc 3:Build và Run project.
 
+*BƯớc 3:Cấu hình lại file glassfish-resource.xml sao cho đúng với cấu hình trên máy
+![setup](https://user-images.githubusercontent.com/44610326/71303209-1b8f9180-23e8-11ea-9ff1-4943201d3eee.png)
+
+*Bước 4: Build và run project
 
 
